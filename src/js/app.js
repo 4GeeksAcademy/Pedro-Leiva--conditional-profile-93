@@ -1,3 +1,4 @@
+import { name } from "file-loader";
 import "../style/index.css";
 
 /**
@@ -15,7 +16,7 @@ import "../style/index.css";
         linkedin: null,
         instagram: null,
 
-        name: null,
+        name: ,
         lastName: null,
         role: null,
         country: null,
@@ -33,14 +34,44 @@ function render(variables = {}) {
   document.querySelector("#widget_content").innerHTML = `<div class="widget">
             ${cover}
           <img src="${variables.avatarURL}" class="photo" />
-          <h1>Lucy Boilett</h1>
-          <h2>Web Developer</h2>
-          <h3>Miami, USA</h3>
-          <ul class="position-right">
-            <li><a href="https://twitter.com/4geeksacademy"><i class="fab fa-twitter"></i></a></li>
-            <li><a href="https://github.com/4geeksacademy"><i class="fab fa-github"></i></a></li>
-            <li><a href="https://linkedin.com/school/4geeksacademy"><i class="fab fa-linkedin"></i></a></li>
-            <li><a href="https://instagram.com/4geeksacademy"><i class="fab fa-instagram"></i></a></li>
+          <h1> ${
+            variables.name == null || variables.name == ""
+              ? "first name"
+              : variables.name
+          }  
+            ${
+              variables.lastName == null || variables.lastName == ""
+                ? "last name"
+                : variables.lastName
+            } </h1>
+          <h2>${
+            variables.role == null || variables.rol == ""
+              ? "rol"
+              : variables.rol
+          }</h2>
+          <h3>${
+            variables.city == null || variables.city == ""
+              ? "city"
+              : variables.city
+          }, 
+            ${
+              variables.country == null || variables.country == ""
+                ? "country"
+                : variables.country
+            }</h3>
+          <ul class="${variables.socialMediaPosition}">
+            <li><a href= "https://x.com/profile" ${
+              variables.x
+            } target= "blanck"><i class="fab fa-twitter"></i></a></li>
+            <li><a href= "https://github.com/The-Ghost56" ${
+              variables.gitgub
+            } target= "blanck"><i class="fab fa-github"></i></a></li>
+            <li><a href= "https://www.linkedin.com/in/pedro-jos%C3%A9-leiva-g%C3%A1lvez-967a39225/" ${
+              variables.linkedin
+            } target= "blanck"><i class="fab fa-linkedin"></i></a></li>
+            <li><a href="https://instagram.com/4geeksacademy" ${
+              variables.instagram
+            } target= "blanck"><i class="fab fa-instagram"></i></a></li>
           </ul>
         </div>
     `;
@@ -60,7 +91,7 @@ window.onload = function() {
     // social media bar position (left or right)
     socialMediaPosition: "position-left",
     // social media usernames
-    twitter: null,
+    x: null,
     github: null,
     linkedin: null,
     instagram: null,
